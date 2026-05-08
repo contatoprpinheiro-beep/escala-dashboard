@@ -943,6 +943,12 @@ function update() {
     ? `${prev.short}: ${n(prev.ref)} pedidos / ${brl(prev.rv)} → ${d.short}: ${n(d.ref)} pedidos / ${brl(d.rv)}. Variação: ${fmtVar(refundVar)} em quantidade, ${fmtVar(refundValueVar)} em valor.`
     : `Base inicial: ${n(d.ref)} pedidos devolvidos/reembolsados, somando ${brl(d.rv)}.`;
   
+  
+  document.getElementById('returnValueBig').textContent = brl(d.rv);
+  document.getElementById('returnValueText').textContent = prev 
+    ? `${prev.short}: ${brl(prev.rv)} → ${d.short}: ${brl(d.rv)}. Variação: ${fmtVar(refundValueVar)} em valor. Representa ${p(refundValueShare)} do faturamento pago.`
+    : `Base inicial: ${brl(d.rv)} em vendas devolvidas/reembolsadas. Representa ${p(refundValueShare)} do faturamento pago.`;
+
   document.getElementById('returnStatus').textContent = d.rv === maxRefundValue
     ? `Este é o maior valor devolvido/reembolsado do período. Impacto financeiro direto de ${brl(d.rv)}.`
     : (prev && refundValueVar > 0 
