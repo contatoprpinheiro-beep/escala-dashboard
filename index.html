@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escala Report - Dashboard</title>
+
+  <style>
+    :root{
+      --bg:#050608;
+      --bg2:#101218;
+      --card:#141821;
+      --line:rgba(255,255,255,.08);
+      --text:#f7f8fb;
+      --muted:#9aa3b2;
+      --orange:#ee4d2d;
+      --orange2:#ff7a55;
+      --gold:#d4af37;
+      --gold2:#f6da78;
+      --green:#20c783;
+      --red:#f05252;
+      --warn:#f5a524;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:Inter,Arial,sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(238,77,45,.15), transparent 25%),
+        linear-gradient(180deg,#050608,#0b0d12 55%,#050608);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    .app{
+      display:grid;
+      grid-template-columns:260px 1fr;
+      min-height:100vh;
+    }
+
+    /* SIDEBAR */
+
+    .side{
+      position:sticky;
+      top:0;
+      height:100vh;
+      background:linear-gradient(180deg,#08090d,#101218);
+      border-right:1px solid rgba(212,175,55,.18);
+      padding:22px 16px;
+      overflow-y:auto;
+    }
+
+    .logo-img-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:6px 6px 12px;
+      margin-bottom:6px;
+      border-bottom:1px solid rgba(212,175,55,.16);
+    }
+
+    .logo-img{
+      width:180px;
+      height:60px;
+      object-fit:contain;
+      filter:drop-shadow(0 12px 26px rgba(0,0,0,.35));
+    }
+
+    .brandline{
+      font-size:12px;
+      color:var(--gold2);
+      letter-spacing:.03em;
+      margin:8px 0 26px;
+      text-align:center;
+      font-weight:700;
+    }
+
+    .nav-title{
+      font-size:11px;
+      color:#7f8799;
+      margin:18px 0 8px;
+      text-transform:uppercase;
+      letter-spacing:.10em;
+    }
+
+    .nav{
+      width:100%;
+      border:1px solid transparent;
+      background:transparent;
+      color:#d5d8e2;
+      padding:12px;
+      border-radius:14px;
+      font-size:14px;
+      margin:4px 0;
+      text-align:left;
+      cursor:pointer;
+      transition:.22s ease;
+      display:flex;
+      align-items:center;
+      gap:9px;
+    }
+
+    .nav:hover{
+      background:rgba(238,77,45,.12);
+      transform:translateX(3px);
+      border-color:rgba(238,77,45,.18);
+    }
+
+    .nav.on{
+      background:linear-gradient(90deg,rgba(238,77,45,.28),rgba(212,175,55,.10));
+      border-color:rgba(238,77,45,.42);
+      color:#fff;
+      font-weight:900;
+    }
+
+    /* MAIN */
+
+    .main{
+      padding:24px;
+    }
+
+    .top{
+      background:linear-gradient(135deg,rgba(17,18,22,.94),rgba(26,28,37,.94) 55%,rgba(238,77,45,.34));
+      border:1px solid rgba(212,175,55,.24);
+      border-radius:26px;
+      padding:22px;
+      margin-bottom:18px;
+      box-shadow:0 20px 60px rgba(0,0,0,.35);
+    }
+
+    h1{
+      font-size:30px;
+      letter-spacing:-.04em;
+      margin-bottom:8px;
+    }
+
+    .sub{
+      color:#d6dae5;
+      font-size:13px;
+    }
+
+    .grid{
+      display:grid;
+      gap:18px;
+    }
+
+    .kpis{
+      grid-template-columns:repeat(4,1fr);
+    }
+
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.035));
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:20px;
+      backdrop-filter:blur(12px);
+      transition:.25s ease;
+      box-shadow:0 22px 70px rgba(0,0,0,.35);
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(212,175,55,.28);
+    }
+
+    .kpi{
+      border-top:5px solid var(--orange);
+    }
+
+    .kpi.ads{
+      border-top:5px solid var(--warn);
+    }
+
+    .kpi.profit{
+      border-top:5px solid var(--green);
+    }
+
+    .kpi.alert{
+      border-top:5px solid var(--red);
+    }
+
+    .label{
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    .value{
+      font-size:32px;
+      font-weight:900;
+      letter-spacing:-.04em;
+    }
+
+    .note{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .refund-highlight{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:16px;
+    }
+
+    .refund-box{
+      border:1px solid rgba(238,77,45,.35);
+      background:linear-gradient(180deg,rgba(238,77,45,.14),rgba(255,255,255,.035));
+      border-radius:18px;
+      padding:16px;
+      transition:.25s ease;
+    }
+
+    .refund-box.money{
+      border-color:rgba(212,175,55,.38);
+      background:linear-gradient(180deg,rgba(212,175,55,.16),rgba(255,255,255,.035));
+    }
+
+    .refund-box:hover{
+      transform:translateY(-3px);
+    }
+
+    .alert-call{
+      margin-top:18px;
+      background:rgba(238,77,45,.14);
+      border:1px solid rgba(238,77,45,.35);
+      color:#ffc8ba;
+      border-radius:16px;
+      padding:14px;
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:10px;
+    }
+
+    th,td{
+      padding:12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      text-align:left;
+      font-size:13px;
+    }
+
+    th{
+      color:#c6cad7;
+      text-transform:uppercase;
+      font-size:11px;
+    }
+
+    @media(max-width:1120px){
+      .app{
+        grid-template-columns:1fr;
+      }
+
+      .side{
+        display:none;
+      }
+
+      .kpis{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:700px){
+      .kpis,
+      .refund-highlight{
+        grid-template-columns:1fr;
+      }
+
+      .main{
+        padding:14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+
+  <aside class="side">
+
+    <div class="logo-img-wrap">
+      <img class="logo-img" src="COLE_AQUI_SUA_LOGO_BASE64" alt="Escala Ecom">
+    </div>
+
+    <div class="brandline">
+      Escala Report - Dashboard
+    </div>
+
+    <div class="nav-title">Navegação</div>
+
+    <button class="nav on">📊 Visão Geral</button>
+    <button class="nav">📣 ADS</button>
+    <button class="nav">💰 Resultado</button>
+    <button class="nav">⚠️ Alertas</button>
+    <button class="nav">✅ Plano de Ação</button>
+
+    <div class="nav-title">Cliente</div>
+
+    <button class="nav">Pantera Rosa</button>
+    <button class="nav">Shopee</button>
+
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <section class="top">
+      <h1>Painel de Controle | Pantera Rosa</h1>
+      <p class="sub">ASSESSORIA - DASHBOARD ECOMMERCE</p>
+    </section>
+
+    <!-- KPIS -->
+
+    <div class="grid kpis">
+
+      <div class="card kpi">
+        <div class="label">Faturamento Pago</div>
+        <div class="value">R$ 174,2k</div>
+        <div class="note">Melhor mês do período analisado.</div>
+      </div>
+
+      <div class="card kpi ads">
+        <div class="label">Investimento ADS</div>
+        <div class="value">R$ 8,3k</div>
+        <div class="note">Escala eficiente com ROAS elevado.</div>
+      </div>
+
+      <div class="card kpi profit">
+        <div class="label">Resultado Estimado</div>
+        <div class="value">R$ 165,9k</div>
+        <div class="note">Faturamento pago - ADS.</div>
+      </div>
+
+      <div class="card kpi alert">
+        <div class="label">ROAS</div>
+        <div class="value">15,44</div>
+        <div class="note">Maior eficiência do período.</div>
+      </div>
+
+    </div>
+
+    <!-- DEVOLUÇÕES -->
+
+    <div class="card" style="margin-top:18px;">
+
+      <h2 style="margin-bottom:8px;">⚠️ Devoluções / Reembolsos</h2>
+
+      <p class="note">
+        Monitoramento de pós-venda com foco em impacto financeiro e experiência do cliente.
+      </p>
+
+      <div class="refund-highlight">
+
+        <div class="refund-box">
+          <div class="label">Pedidos devolvidos / reembolsados</div>
+          <div class="value">81 pedidos</div>
+          <div class="note">
+            Abril apresentou redução em quantidade frente a fevereiro.
+          </div>
+        </div>
+
+        <div class="refund-box money">
+          <div class="label">Vendas devolvidas / reembolsadas</div>
+          <div class="value">R$ 4.337,91</div>
+          <div class="note">
+            Representa aproximadamente 2,49% do faturamento pago.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="alert-call">
+        O volume de devoluções/reembolsos continua controlado frente ao crescimento da operação.
+        Mesmo assim, é importante cruzar os pedidos reembolsados com campanhas ADS e produtos campeões
+        para evitar crescimento sem margem.
+      </div>
+
+    </div>
+
+    <!-- TABELA -->
+
+    <div class="card" style="margin-top:18px;">
+
+      <h2 style="margin-bottom:10px;">
+        Indicadores Operacionais
+      </h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Métrica</th>
+            <th>Valor</th>
+            <th>Leitura</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>Visitantes</td>
+            <td>140.087</td>
+            <td>Maior volume de tráfego do período analisado.</td>
+          </tr>
+
+          <tr>
+            <td>Pedidos devolvidos / reembolsados</td>
+            <td>81</td>
+            <td>Indicador controlado frente ao crescimento da operação.</td>
+          </tr>
+
+          <tr>
+            <td>Vendas devolvidas / reembolsadas</td>
+            <td>R$ 4.337,91</td>
+            <td>Impacto financeiro que deve ser acompanhado por SKU.</td>
+          </tr>
+
+          <tr>
+            <td>Participação do valor reembolsado</td>
+            <td>2,49%</td>
+            <td>Percentual do faturamento pago devolvido/reembolsado.</td>
+          </tr>
+
+          <tr>
+            <td>ACOS</td>
+            <td>6,45%</td>
+            <td>Excelente eficiência de mídia.</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>
