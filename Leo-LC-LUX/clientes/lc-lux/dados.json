@@ -1,0 +1,241 @@
+{
+  "cliente": {
+    "nome": "LC LUX",
+    "responsavel": "Leonardo",
+    "periodo": "Junho 2026",
+    "marca": "Escala Ecom",
+    "plataformas": [
+      "Mercado Livre",
+      "Shopee"
+    ]
+  },
+  "resumo": {
+    "receitaConsolidada": 3432.94,
+    "receitaGeradaShopee": 559.93,
+    "pedidosPagos": 54,
+    "visitantes": 4118,
+    "ticketMedio": 63.57,
+    "conversaoConsolidada": 1.31,
+    "investimentoAds": 217.29,
+    "receitaAds": 823.88,
+    "roas": 3.79,
+    "acos": 26.37,
+    "score": 74,
+    "status": "Atenção com potencial de escala"
+  },
+  "mercadoLivre": {
+    "mensal": [
+      {
+        "mes": "Abril",
+        "visitas": 501,
+        "compradores": 8,
+        "pedidos": 11,
+        "receita": 455.0,
+        "conversao": 2.2,
+        "ticket": 41.34,
+        "unidades": 11,
+        "cancelamentos": 0,
+        "devolucoes": 0
+      },
+      {
+        "mes": "Maio",
+        "visitas": 1318,
+        "compradores": 30,
+        "pedidos": 31,
+        "receita": 1545.0,
+        "conversao": 2.35,
+        "ticket": 49.84,
+        "unidades": 35,
+        "cancelamentos": 0,
+        "devolucoes": 0
+      },
+      {
+        "mes": "Junho",
+        "visitas": 3745,
+        "compradores": 40,
+        "pedidos": 49,
+        "receita": 2953.0,
+        "conversao": 1.31,
+        "ticket": 60.26,
+        "unidades": 49,
+        "cancelamentos": 0,
+        "devolucoes": 0
+      }
+    ],
+    "ads": [
+      {
+        "mes": "Maio",
+        "campanha": "Campanha",
+        "impressoes": 28417,
+        "cliques": 49,
+        "receita": 116.16,
+        "investimento": 7.97,
+        "roas": 14.57,
+        "acos": 6.86,
+        "vendasAtribuidas": 3
+      },
+      {
+        "mes": "Maio",
+        "campanha": "Campanha aprendizagem",
+        "impressoes": 1962,
+        "cliques": 27,
+        "receita": 239.97,
+        "investimento": 11.18,
+        "roas": 21.46,
+        "acos": 4.66,
+        "vendasAtribuidas": 3
+      },
+      {
+        "mes": "Maio",
+        "campanha": "Campanha2",
+        "impressoes": 55834,
+        "cliques": 415,
+        "receita": 440.05,
+        "investimento": 51.44,
+        "roas": 8.55,
+        "acos": 11.69,
+        "vendasAtribuidas": 10
+      },
+      {
+        "mes": "Junho",
+        "campanha": "Campanha aprendizagem",
+        "impressoes": 1213529,
+        "cliques": 1094,
+        "receita": 823.88,
+        "investimento": 217.29,
+        "roas": 3.79,
+        "acos": 26.37,
+        "vendasAtribuidas": 12
+      }
+    ],
+    "compradores": {
+      "novos": 78,
+      "recorrentes": 0,
+      "participacaoNovos": 100,
+      "receitaNovos": 4952
+    },
+    "faixasPreco": [
+      {
+        "faixa": "0-29",
+        "compradores": 4,
+        "receita": 88,
+        "conversao": 0.07
+      },
+      {
+        "faixa": "29-79",
+        "compradores": 57,
+        "receita": 3381,
+        "conversao": 1.02
+      },
+      {
+        "faixa": "79-130",
+        "compradores": 17,
+        "receita": 1483,
+        "conversao": 0.3
+      }
+    ]
+  },
+  "shopee": {
+    "junho": {
+      "vendasPedidoFeito": 559.93,
+      "vendasPagas": 479.94,
+      "pedidosFeitos": 6,
+      "pedidosPagos": 5,
+      "ticketPedidoFeito": 93.32,
+      "ticketPago": 95.99,
+      "cliquesProduto": 482,
+      "visitantes": 373,
+      "conversaoPedidoFeito": 1.24,
+      "conversaoPago": 1.04,
+      "cancelamentos": 1,
+      "vendasCanceladas": 79.99,
+      "devolucoes": 1,
+      "vendasDevolvidas": 159.98,
+      "compradores": 5,
+      "novosCompradores": 5,
+      "compradoresExistentes": 0,
+      "repetirIndiceCompras": 0
+    },
+    "fontes": [
+      {
+        "fonte": "Card do Produto",
+        "vendas": 559.93,
+        "participacao": 100,
+        "impressoes": 14836,
+        "cliques": 482,
+        "pedidos": 6,
+        "ctr": 3.25,
+        "conversao": 1.24
+      },
+      {
+        "fonte": "Pesquisar",
+        "vendas": 559.93,
+        "participacao": 100,
+        "impressoes": 13387,
+        "cliques": 422,
+        "pedidos": 6,
+        "ctr": 3.15,
+        "conversao": 1.42
+      },
+      {
+        "fonte": "Loja/Recomendação/Carrinho/Outros",
+        "vendas": 0,
+        "participacao": 0,
+        "impressoes": 1407,
+        "cliques": 55,
+        "pedidos": 0,
+        "ctr": 3.91,
+        "conversao": 0
+      }
+    ],
+    "produtoDestaque": {
+      "nome": "Jaqueta Fitness Feminina Proteção Solar UV50+ Manga Longa Dry Fit",
+      "impressoes": 7628,
+      "cliques": 361,
+      "ctr": 4.73,
+      "conversao": 1.66,
+      "pedidos": 6,
+      "vendas": 559.93
+    }
+  },
+  "diagnostico": {
+    "pontosFortes": [
+      "Mercado Livre cresceu 91,1% em receita de maio para junho.",
+      "Ticket médio do Mercado Livre subiu de R$ 49,84 para R$ 60,26.",
+      "Shopee gerou vendas sem investimento em anúncios, validando demanda orgânica.",
+      "Cancelamentos e devoluções no Mercado Livre ficaram zerados no período analisado."
+    ],
+    "atencao": [
+      "Conversão do Mercado Livre caiu de 2,35% para 1,31% com o aumento de visitas.",
+      "ROAS de anúncios do Mercado Livre caiu de 11,28 em maio para 3,79 em junho.",
+      "Shopee depende praticamente de um único produto para gerar receita.",
+      "Base recorrente ainda é baixa: 0 compradores recorrentes no Mercado Livre e na Shopee."
+    ],
+    "acao": [
+      {
+        "prioridade": "Alta",
+        "acao": "Revisar campanha de aprendizagem do Mercado Livre para reduzir ACOS e recuperar ROAS.",
+        "impacto": 5,
+        "esforco": 3
+      },
+      {
+        "prioridade": "Alta",
+        "acao": "Expandir variações e SKUs relacionados à jaqueta destaque da Shopee.",
+        "impacto": 5,
+        "esforco": 2
+      },
+      {
+        "prioridade": "Média",
+        "acao": "Melhorar páginas dos produtos com maior tráfego para recuperar conversão no Mercado Livre.",
+        "impacto": 4,
+        "esforco": 3
+      },
+      {
+        "prioridade": "Média",
+        "acao": "Criar rotina de recompra: cupom, kits e comunicação pós-venda.",
+        "impacto": 4,
+        "esforco": 2
+      }
+    ]
+  }
+}

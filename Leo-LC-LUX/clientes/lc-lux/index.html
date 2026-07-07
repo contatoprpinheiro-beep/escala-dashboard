@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Escala Report | LC LUX</title>
+<style>
+:root{--bg:#050608;--panel:#101218;--panel2:#151822;--card:#12151d;--line:rgba(255,255,255,.10);--text:#f7f8fb;--muted:#a5abb9;--gold:#d4af37;--gold2:#f6da78;--green:#20c783;--red:#f05252;--warn:#f5a524;--blue:#60a5fa;--orange:#ee4d2d}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(circle at 20% 0%,rgba(212,175,55,.18),transparent 28%),linear-gradient(180deg,var(--bg),#0b0d12 58%,#050608);font-family:Inter,Arial,sans-serif;color:var(--text)}
+.app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}.side{position:sticky;top:0;height:100vh;background:linear-gradient(180deg,#08090d,#101218);border-right:1px solid rgba(212,175,55,.22);padding:22px 16px;overflow:auto}.brand{font-size:24px;font-weight:900;letter-spacing:.02em}.brand span{color:var(--gold)}.brandline{font-size:12px;color:var(--gold2);font-weight:800;margin:4px 0 22px}.nav-title{font-size:11px;color:#7f8799;margin:18px 0 8px;text-transform:uppercase;letter-spacing:.10em}.nav{width:100%;border:1px solid transparent;background:transparent;color:#d5d8e2;padding:10px 12px;border-radius:12px;text-align:left;cursor:pointer;font-weight:800}.nav:hover,.nav.active{background:rgba(212,175,55,.10);border-color:rgba(212,175,55,.24);color:#fff}.content{padding:28px 30px 70px;max-width:1440px;width:100%;margin:0 auto}.hero{display:grid;grid-template-columns:1.4fr .6fr;gap:18px;margin-bottom:18px}.panel{background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018));border:1px solid rgba(255,255,255,.10);border-radius:24px;box-shadow:0 22px 70px rgba(0,0,0,.32);padding:24px}.kicker{display:inline-flex;gap:8px;align-items:center;color:var(--gold2);font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase}.dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}h1{font-size:46px;line-height:1.02;margin:12px 0 8px}.sub{color:var(--muted);font-size:15px;line-height:1.55}.status{font-size:16px;font-weight:900;color:#111;background:linear-gradient(135deg,var(--gold),var(--gold2));display:inline-block;padding:10px 14px;border-radius:999px;margin-top:14px}.score{display:grid;place-items:center;text-align:center;min-height:210px}.score-num{font-size:74px;font-weight:950;color:var(--gold2)}.score-label{font-size:13px;color:var(--muted);font-weight:800}.grid{display:grid;gap:14px}.grid.kpis{grid-template-columns:repeat(4,1fr)}.grid.two{grid-template-columns:1fr 1fr}.grid.three{grid-template-columns:repeat(3,1fr)}.card{background:linear-gradient(180deg,var(--card),rgba(18,21,29,.74));border:1px solid var(--line);border-radius:20px;padding:18px}.label{font-size:12px;text-transform:uppercase;color:var(--muted);font-weight:900;letter-spacing:.08em}.value{font-size:28px;font-weight:950;margin-top:8px}.delta{font-size:12px;margin-top:8px;color:var(--muted)}.good{color:var(--green)}.warn{color:var(--warn)}.bad{color:var(--red)}section{margin-top:18px}.section-head{display:flex;align-items:end;justify-content:space-between;margin:26px 0 12px}h2{margin:0;font-size:25px}.table{width:100%;border-collapse:separate;border-spacing:0 10px}.table th{color:var(--muted);font-size:12px;text-align:left;text-transform:uppercase;letter-spacing:.06em}.table td{background:rgba(255,255,255,.04);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 12px}.table td:first-child{border-left:1px solid var(--line);border-radius:14px 0 0 14px;font-weight:900}.table td:last-child{border-right:1px solid var(--line);border-radius:0 14px 14px 0}.bar{height:10px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:999px}.chart{height:260px;display:flex;align-items:end;gap:16px;border-left:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px}.col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}.col i{display:block;width:100%;max-width:62px;background:linear-gradient(180deg,var(--gold2),var(--gold));border-radius:12px 12px 4px 4px}.col b{font-size:12px}.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px}.platform{border:1px solid rgba(212,175,55,.18);border-radius:22px;padding:18px;background:rgba(255,255,255,.035)}.platform h3{margin:0 0 12px}.insight{border-left:4px solid var(--gold);background:rgba(212,175,55,.08);padding:14px;border-radius:14px;margin:10px 0;color:#f3f0df}.pill{display:inline-flex;padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:#dce0eb;font-weight:900;font-size:12px;margin:4px}.actions{display:grid;gap:12px}.action{display:grid;grid-template-columns:90px 1fr 170px;gap:12px;align-items:center}.stars{color:var(--gold2);font-size:18px;letter-spacing:2px}.context-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.event-card{border-left:4px solid var(--warn);background:rgba(245,165,36,.09);padding:16px;border-radius:16px;margin:10px 0}.event-card b{color:#fff}.timeline{display:grid;gap:10px}.time-item{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:start}.time-date{color:#111;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:999px;padding:7px 10px;text-align:center;font-size:12px;font-weight:950}.time-box{border:1px solid var(--line);border-radius:14px;padding:12px;background:rgba(255,255,255,.035)}.tag-marketing{border-color:rgba(96,165,250,.35);color:#dbeafe}.tag-operacao{border-color:rgba(245,165,36,.45);color:#fde68a}.tag-marketplace{border-color:rgba(32,199,131,.35);color:#bbf7d0}.print{position:fixed;right:18px;bottom:18px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#111;border:0;border-radius:999px;padding:14px 18px;font-weight:950;cursor:pointer;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+
+.logo-img{display:block;width:168px;height:auto;filter:drop-shadow(0 10px 24px rgba(212,175,55,.20))}
+.side-brand{display:grid;gap:12px;margin-bottom:18px}
+.brand-box{padding:14px;border:1px solid rgba(212,175,55,.18);border-radius:18px;background:linear-gradient(135deg,rgba(212,175,55,.10),rgba(255,255,255,.025))}
+.report-chip{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:8px 10px;border:1px solid rgba(212,175,55,.28);border-radius:999px;background:rgba(212,175,55,.08);color:var(--gold2);font-size:11px;font-weight:950;letter-spacing:.10em;text-transform:uppercase}
+.hero .panel:first-child{position:relative;overflow:hidden;min-height:274px}
+.hero .panel:first-child:before{content:"";position:absolute;inset:-1px;background:radial-gradient(circle at 76% 22%,rgba(246,218,120,.24),transparent 24%),linear-gradient(135deg,rgba(255,255,255,.05),transparent 42%);pointer-events:none}
+.hero-content{position:relative;z-index:1}
+.hero-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:10px}
+.hero-logo{width:190px;max-width:44%;filter:drop-shadow(0 18px 36px rgba(0,0,0,.55))}
+.metric-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.metric-mini{border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);border-radius:16px;padding:12px}
+.metric-mini b{display:block;font-size:17px;color:#fff;margin-top:4px}
+.panel,.card,.platform{position:relative;overflow:hidden}
+.panel:after,.card:after,.platform:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.045) 42%,transparent 62%);transform:translateX(-120%);transition:.8s ease;pointer-events:none}
+.panel:hover:after,.card:hover:after,.platform:hover:after{transform:translateX(120%)}
+.nav{transition:.25s ease}.nav:hover{transform:translateX(4px)}
+.value,.score-num{letter-spacing:-.04em}
+.score-ring{width:178px;height:178px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold2) calc(var(--score)*1%),rgba(255,255,255,.08) 0);box-shadow:0 0 60px rgba(212,175,55,.12);padding:10px}
+.score-ring-inner{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,#101218,#07080b);border:1px solid rgba(255,255,255,.10)}
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;z-index:20;box-shadow:0 0 22px rgba(212,175,55,.65)}
+.floating-orb{position:fixed;border-radius:999px;filter:blur(36px);opacity:.22;pointer-events:none;z-index:-1}
+.orb-a{width:240px;height:240px;right:8%;top:8%;background:var(--gold)}
+.orb-b{width:300px;height:300px;left:18%;bottom:6%;background:#ffffff}
+.presentation-footer{margin-top:34px;padding:18px 0;color:#7f8799;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:14px;font-size:12px}
+.close-section{text-align:center;min-height:360px;display:grid;place-items:center}
+.close-section .logo-img{width:260px;margin:0 auto 18px}
+.close-title{font-size:48px;font-weight:950;margin:8px 0;background:linear-gradient(135deg,#fff,var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}} 
+section{animation:fadeUp .65s ease both}
+@media(max-width:980px){.hero-top{align-items:flex-start}.hero-logo{max-width:52%;width:150px}.metric-strip{grid-template-columns:1fr}.logo-img{width:140px}.close-title{font-size:34px}}
+@media print{.progress,.floating-orb{display:none}.hero .panel:first-child:before,.panel:after,.card:after,.platform:after{display:none}.presentation-footer{break-inside:avoid}}
+
+@media(max-width:980px){.app{grid-template-columns:1fr}.side{position:relative;height:auto}.hero,.grid.kpis,.grid.two,.grid.three,.compare,.context-grid{grid-template-columns:1fr}.content{padding:20px}.action{grid-template-columns:1fr}h1{font-size:34px}}
+@media print{.side,.print{display:none}.app{display:block}.content{max-width:none;padding:0}.panel,.card{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div><div class="floating-orb orb-a"></div><div class="floating-orb orb-b"></div>
+<div class="app">
+<aside class="side">
+  <div class="side-brand">
+    <div class="brand-box"><img src="assets/escala-logo.png" alt="Escala Ecom" class="logo-img"></div>
+    <div>
+      <div class="brand">ESCALA <span>REPORT</span></div>
+      <div class="brandline">Operação real • análise clara</div>
+    </div>
+  </div>
+  <div class="nav-title">Reunião</div>
+  <button class="nav active" onclick="go('resumo')">Resumo Executivo</button>
+  <button class="nav" onclick="go('contexto')">Contexto do Período</button>
+  <button class="nav" onclick="go('evolucao')">Evolução Mensal</button>
+  <button class="nav" onclick="go('comparativo')">ML × Shopee</button>
+  <button class="nav" onclick="go('ml')">Mercado Livre</button>
+  <button class="nav" onclick="go('shopee')">Shopee</button>
+  <button class="nav" onclick="go('diagnostico')">Diagnóstico</button>
+  <button class="nav" onclick="go('plano')">Plano de Ação</button>
+  <button class="nav" onclick="go('encerramento')">Encerramento</button>
+</aside>
+<main class="content">
+  <section id="resumo" class="hero">
+    <div class="panel">
+      <div class="hero-content">
+        <div class="hero-top">
+          <div class="report-chip"><span class="dot"></span> Escala Report v2.3</div>
+          <img src="assets/escala-logo.png" alt="Escala Ecom" class="hero-logo">
+        </div>
+        <div class="kicker"><span class="dot"></span><span id="periodo"></span></div>
+        <h1 id="titulo">LC LUX</h1>
+        <p class="sub">Relatório estratégico para reunião de análise de performance. Visão consolidada das plataformas Mercado Livre e Shopee, com leitura executiva, contexto operacional, diagnóstico e plano de ação.</p>
+        <div class="status" id="status"></div>
+        <div class="metric-strip">
+          <div class="metric-mini"><span class="label">Cliente</span><b>LC LUX</b></div>
+          <div class="metric-mini"><span class="label">Responsável</span><b>Leonardo</b></div>
+          <div class="metric-mini"><span class="label">Modelo</span><b>Marketplaces</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel score">
+      <div class="score-ring" id="scoreRing">
+        <div class="score-ring-inner">
+          <div>
+            <div class="score-label">SCORE ESCALA</div>
+            <div class="score-num" id="score"></div>
+            <div class="score-label">de 100 • saúde comercial e operacional</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="grid kpis" id="kpis"></section>
+
+
+  <section id="contexto">
+    <div class="section-head"><h2>Contexto operacional do período</h2><span class="sub">Leitura correta dos indicadores</span></div>
+    <div class="context-grid">
+      <div class="panel">
+        <h3>Ocorrência relevante</h3>
+        <div id="contextoEvento"></div>
+        <div id="contextoImpactos"></div>
+      </div>
+      <div class="panel">
+        <h3>Linha do tempo</h3>
+        <div class="timeline" id="contextoTimeline"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="evolucao">
+    <div class="section-head"><h2>Evolução mensal — Mercado Livre</h2><span class="sub">Abril a Junho/2026</span></div>
+    <div class="panel"><div class="chart" id="chartReceita"></div></div>
+    <div class="grid three" id="evolucaoCards"></div>
+  </section>
+
+  <section id="comparativo">
+    <div class="section-head"><h2>Comparativo por plataforma</h2><span class="sub">Junho/2026</span></div>
+    <div class="compare" id="platformCompare"></div>
+  </section>
+
+  <section id="ml">
+    <div class="section-head"><h2>Mercado Livre</h2><span class="sub">Comercial + anúncios</span></div>
+    <div class="grid two">
+      <div class="panel">
+        <h3>Performance mensal</h3>
+        <table class="table" id="mlTable"></table>
+      </div>
+      <div class="panel">
+        <h3>Publicidade</h3>
+        <table class="table" id="adsTable"></table>
+      </div>
+    </div>
+  </section>
+
+  <section id="shopee">
+    <div class="section-head"><h2>Shopee</h2><span class="sub">Junho/2026</span></div>
+    <div class="grid two">
+      <div class="panel" id="shopeePanel"></div>
+      <div class="panel" id="fontePanel"></div>
+    </div>
+    <div class="panel" style="margin-top:14px" id="produtoPanel"></div>
+  </section>
+
+  <section id="diagnostico">
+    <div class="section-head"><h2>Diagnóstico executivo</h2><span class="sub">O que os números estão dizendo</span></div>
+    <div class="grid two">
+      <div class="panel"><h3 class="good">Pontos fortes</h3><div id="fortes"></div></div>
+      <div class="panel"><h3 class="warn">Pontos de atenção</h3><div id="atencao"></div></div>
+    </div>
+  </section>
+
+  <section id="plano">
+    <div class="section-head"><h2>Plano de ação</h2><span class="sub">Próximo ciclo</span></div>
+    <div class="panel actions" id="acoes"></div>
+  </section>
+
+  <section id="encerramento" class="panel close-section">
+    <div>
+      <img src="assets/escala-logo.png" alt="Escala Ecom" class="logo-img">
+      <div class="close-title">Próximo ciclo: retomada, estoque e escala.</div>
+      <p class="sub">Relatório preparado para reunião estratégica de performance da LC LUX.</p>
+      <div class="status">Escala Ecom • Estratégia • Performance • Clareza</div>
+    </div>
+  </section>
+  <div class="presentation-footer">
+    <span>Escala Report • LC LUX • Junho/2026</span>
+    <span>Escala Ecom — operação real, análise clara.</span>
+  </div>
+</main>
+</div>
+<button class="print" onclick="window.print()">Exportar / imprimir PDF</button>
+<script>
+const brl = v => (v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const pct = v => (v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%';
+const num = v => (v||0).toLocaleString('pt-BR');
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});document.querySelectorAll('.nav').forEach(b=>b.classList.remove('active'));event?.target?.classList.add('active')}
+function stars(n){return '★★★★★☆☆☆☆☆'.slice(5-n,10-n)}
+function card(label,value,delta='',cls=''){return `<div class="card"><div class="label">${label}</div><div class="value ${cls}">${value}</div><div class="delta">${delta}</div></div>`}
+const REPORT_DATA = {
+  "cliente": {
+    "nome": "LC LUX",
+    "responsavel": "Leonardo",
+    "periodo": "Junho 2026",
+    "marca": "Escala Ecom",
+    "plataformas": [
+      "Mercado Livre",
+      "Shopee"
+    ]
+  },
+  "resumo": {
+    "receitaConsolidada": 3432.94,
+    "receitaGeradaShopee": 559.93,
+    "pedidosPagos": 54,
+    "visitantes": 4118,
+    "ticketMedio": 63.57,
+    "conversaoConsolidada": 1.31,
+    "investimentoAds": 217.29,
+    "receitaAds": 823.88,
+    "roas": 3.79,
+    "acos": 26.37,
+    "score": 74,
+    "status": "Atenção com potencial de escala"
+  },
+  "contextoOperacional": {
+    "titulo": "Pausa operacional por indisponibilidade de estoque",
+    "periodo": "22/06 a 03/07",
+    "responsabilidade": "Operação do cliente",
+    "resumo": "Entre 22/06 e 03/07, os anúncios do Mercado Livre ficaram desativados por falta de estoque. Por isso, a queda de conversão e a perda de eficiência no fim do período devem ser analisadas considerando essa interrupção operacional, e não como falha isolada da gestão de mídia.",
+    "impactos": [
+      "Redução de tração comercial no final de junho.",
+      "Queda da conversão do Mercado Livre de 2,35% em maio para 1,31% em junho.",
+      "Interrupção de campanhas no período final do mês, afetando leitura de ROAS e volume de vendas.",
+      "Necessidade de acompanhar a retomada após 03/07 para validar recuperação da performance."
+    ],
+    "timeline": [
+      {
+        "data": "01/06",
+        "evento": "Início do período de análise de junho."
+      },
+      {
+        "data": "22/06",
+        "evento": "Anúncios do Mercado Livre desativados por indisponibilidade de estoque."
+      },
+      {
+        "data": "30/06",
+        "evento": "Fechamento do relatório mensal ainda impactado pela pausa operacional."
+      },
+      {
+        "data": "03/07",
+        "evento": "Período informado de normalização/retomada após reposição de estoque."
+      }
+    ],
+    "classificacao": [
+      {
+        "tipo": "Marketing / Assessoria",
+        "descricao": "Otimização de campanhas, leitura de ROAS, criativos e estratégia de mídia.",
+        "classe": "tag-marketing"
+      },
+      {
+        "tipo": "Operação do cliente",
+        "descricao": "Estoque, disponibilidade de produtos, pausa de anúncios, cancelamentos e logística.",
+        "classe": "tag-operacao"
+      },
+      {
+        "tipo": "Marketplace",
+        "descricao": "Oscilações de algoritmo, competição, busca interna e eventos promocionais da plataforma.",
+        "classe": "tag-marketplace"
+      }
+    ]
+  },
+  "mercadoLivre": {
+    "mensal": [
+      {
+        "mes": "Abril",
+        "visitas": 501,
+        "compradores": 8,
+        "pedidos": 11,
+        "receita": 455.0,
+        "conversao": 2.2,
+        "ticket": 41.34,
+        "unidades": 11,
+        "cancelamentos": 0,
+        "devolucoes": 0
+      },
+      {
+        "mes": "Maio",
+        "visitas": 1318,
+        "compradores": 30,
+        "pedidos": 31,
+        "receita": 1545.0,
+        "conversao": 2.35,
+        "ticket": 49.84,
+        "unidades": 35,
+        "cancelamentos": 0,
+        "devolucoes": 0
+      },
+      {
+        "mes": "Junho",
+        "visitas": 3745,
+        "compradores": 40,
+        "pedidos": 49,
+        "receita": 2953.0,
+        "conversao": 1.31,
+        "ticket": 60.26,
+        "unidades": 49,
+        "cancelamentos": 0,
+        "devolucoes": 0
+      }
+    ],
+    "ads": [
+      {
+        "mes": "Maio",
+        "campanha": "Campanha",
+        "impressoes": 28417,
+        "cliques": 49,
+        "receita": 116.16,
+        "investimento": 7.97,
+        "roas": 14.57,
+        "acos": 6.86,
+        "vendasAtribuidas": 3
+      },
+      {
+        "mes": "Maio",
+        "campanha": "Campanha aprendizagem",
+        "impressoes": 1962,
+        "cliques": 27,
+        "receita": 239.97,
+        "investimento": 11.18,
+        "roas": 21.46,
+        "acos": 4.66,
+        "vendasAtribuidas": 3
+      },
+      {
+        "mes": "Maio",
+        "campanha": "Campanha2",
+        "impressoes": 55834,
+        "cliques": 415,
+        "receita": 440.05,
+        "investimento": 51.44,
+        "roas": 8.55,
+        "acos": 11.69,
+        "vendasAtribuidas": 10
+      },
+      {
+        "mes": "Junho",
+        "campanha": "Campanha aprendizagem",
+        "impressoes": 1213529,
+        "cliques": 1094,
+        "receita": 823.88,
+        "investimento": 217.29,
+        "roas": 3.79,
+        "acos": 26.37,
+        "vendasAtribuidas": 12
+      }
+    ],
+    "compradores": {
+      "novos": 78,
+      "recorrentes": 0,
+      "participacaoNovos": 100,
+      "receitaNovos": 4952
+    },
+    "faixasPreco": [
+      {
+        "faixa": "0-29",
+        "compradores": 4,
+        "receita": 88,
+        "conversao": 0.07
+      },
+      {
+        "faixa": "29-79",
+        "compradores": 57,
+        "receita": 3381,
+        "conversao": 1.02
+      },
+      {
+        "faixa": "79-130",
+        "compradores": 17,
+        "receita": 1483,
+        "conversao": 0.3
+      }
+    ]
+  },
+  "shopee": {
+    "junho": {
+      "vendasPedidoFeito": 559.93,
+      "vendasPagas": 479.94,
+      "pedidosFeitos": 6,
+      "pedidosPagos": 5,
+      "ticketPedidoFeito": 93.32,
+      "ticketPago": 95.99,
+      "cliquesProduto": 482,
+      "visitantes": 373,
+      "conversaoPedidoFeito": 1.24,
+      "conversaoPago": 1.04,
+      "cancelamentos": 1,
+      "vendasCanceladas": 79.99,
+      "devolucoes": 1,
+      "vendasDevolvidas": 159.98,
+      "compradores": 5,
+      "novosCompradores": 5,
+      "compradoresExistentes": 0,
+      "repetirIndiceCompras": 0
+    },
+    "fontes": [
+      {
+        "fonte": "Card do Produto",
+        "vendas": 559.93,
+        "participacao": 100,
+        "impressoes": 14836,
+        "cliques": 482,
+        "pedidos": 6,
+        "ctr": 3.25,
+        "conversao": 1.24
+      },
+      {
+        "fonte": "Pesquisar",
+        "vendas": 559.93,
+        "participacao": 100,
+        "impressoes": 13387,
+        "cliques": 422,
+        "pedidos": 6,
+        "ctr": 3.15,
+        "conversao": 1.42
+      },
+      {
+        "fonte": "Loja/Recomendação/Carrinho/Outros",
+        "vendas": 0,
+        "participacao": 0,
+        "impressoes": 1407,
+        "cliques": 55,
+        "pedidos": 0,
+        "ctr": 3.91,
+        "conversao": 0
+      }
+    ],
+    "produtoDestaque": {
+      "nome": "Jaqueta Fitness Feminina Proteção Solar UV50+ Manga Longa Dry Fit",
+      "impressoes": 7628,
+      "cliques": 361,
+      "ctr": 4.73,
+      "conversao": 1.66,
+      "pedidos": 6,
+      "vendas": 559.93
+    }
+  },
+  "diagnostico": {
+    "pontosFortes": [
+      "Mercado Livre cresceu 91,1% em receita de maio para junho.",
+      "Ticket médio do Mercado Livre subiu de R$ 49,84 para R$ 60,26.",
+      "Shopee gerou vendas sem investimento em anúncios, validando demanda orgânica.",
+      "Cancelamentos e devoluções no Mercado Livre ficaram zerados no período analisado."
+    ],
+    "atencao": [
+      "Conversão do Mercado Livre caiu de 2,35% para 1,31%, com impacto direto da pausa dos anúncios por falta de estoque entre 22/06 e 03/07.",
+      "ROAS de anúncios do Mercado Livre caiu de 11,28 em maio para 3,79 em junho; a leitura deve considerar a interrupção operacional no fim do mês.",
+      "Shopee depende praticamente de um único produto para gerar receita.",
+      "Base recorrente ainda é baixa: 0 compradores recorrentes no Mercado Livre e na Shopee."
+    ],
+    "acao": [
+      {
+        "prioridade": "Alta",
+        "acao": "Retomar e monitorar campanhas do Mercado Livre após normalização do estoque, avaliando ROAS e ACOS sem o efeito da pausa operacional.",
+        "impacto": 5,
+        "esforco": 3
+      },
+      {
+        "prioridade": "Alta",
+        "acao": "Expandir variações e SKUs relacionados à jaqueta destaque da Shopee.",
+        "impacto": 5,
+        "esforco": 2
+      },
+      {
+        "prioridade": "Média",
+        "acao": "Criar rotina de alerta de estoque para evitar pausas de anúncios e proteger conversão, ranking e aprendizado das campanhas.",
+        "impacto": 4,
+        "esforco": 3
+      },
+      {
+        "prioridade": "Média",
+        "acao": "Criar rotina de recompra: cupom, kits e comunicação pós-venda.",
+        "impacto": 4,
+        "esforco": 2
+      }
+    ]
+  }
+};
+const d = REPORT_DATA;
+
+  document.getElementById('periodo').textContent=d.cliente.periodo;
+  document.getElementById('titulo').textContent=d.cliente.nome+' — '+d.cliente.responsavel;
+  document.getElementById('status').textContent=d.resumo.status;
+  document.getElementById('score').textContent=d.resumo.score;
+  document.getElementById('scoreRing').style.setProperty('--score', d.resumo.score);
+  document.getElementById('kpis').innerHTML=[
+    card('Receita consolidada',brl(d.resumo.receitaConsolidada),'ML + Shopee vendas pagas','good'),
+    card('Pedidos pagos',num(d.resumo.pedidosPagos),'49 ML + 5 Shopee'),
+    card('Ticket médio',brl(d.resumo.ticketMedio),'média consolidada'),
+    card('Conversão consolidada',pct(d.resumo.conversaoConsolidada),'baseada em pedidos/visitantes','warn'),
+    card('Investimento ADS',brl(d.resumo.investimentoAds),'Mercado Livre'),
+    card('Receita via ADS',brl(d.resumo.receitaAds),'campanha aprendizagem'),
+    card('ROAS ADS',d.resumo.roas.toFixed(2).replace('.',','),'queda vs maio','warn'),
+    card('ACOS ADS',pct(d.resumo.acos),'atenção à eficiência','warn')
+  ].join('');
+
+  const ctx = d.contextoOperacional;
+  document.getElementById('contextoEvento').innerHTML=`<div class="event-card"><b>${ctx.titulo}</b><br><span class="sub">Período: ${ctx.periodo} • Origem: ${ctx.responsabilidade}</span><br><br>${ctx.resumo}</div>`+
+    ctx.classificacao.map(c=>`<span class="pill ${c.classe}">${c.tipo}</span>`).join('');
+  document.getElementById('contextoImpactos').innerHTML='<h3>Impactos na leitura</h3>'+ctx.impactos.map(x=>`<div class="insight">${x}</div>`).join('');
+  document.getElementById('contextoTimeline').innerHTML=ctx.timeline.map(t=>`<div class="time-item"><div class="time-date">${t.data}</div><div class="time-box">${t.evento}</div></div>`).join('');
+  const max = Math.max(...d.mercadoLivre.mensal.map(x=>x.receita));
+  document.getElementById('chartReceita').innerHTML=d.mercadoLivre.mensal.map(x=>`<div class="col"><i style="height:${Math.max(18,x.receita/max*210)}px"></i><b>${x.mes}</b><span class="sub">${brl(x.receita)}</span></div>`).join('');
+  document.getElementById('evolucaoCards').innerHTML=[
+    card('Crescimento maio → junho','+91,1%','receita no Mercado Livre','good'),
+    card('Visitas junho',num(3745),'+184,1% vs maio','good'),
+    card('Conversão junho',pct(1.31),'queda de 2,35% para 1,31%','warn')
+  ].join('');
+  const mlJ=d.mercadoLivre.mensal[2], sh=d.shopee.junho;
+  document.getElementById('platformCompare').innerHTML=[
+    `<div class="platform"><h3>Mercado Livre</h3>${card('Receita',brl(mlJ.receita),'86,0% do consolidado','good')}${card('Pedidos',mlJ.pedidos,'maior volume')}${card('Ticket',brl(mlJ.ticket),'abaixo da Shopee')}${card('Conversão',pct(mlJ.conversao),'ponto de melhoria','warn')}</div>`,
+    `<div class="platform"><h3>Shopee</h3>${card('Vendas pagas',brl(sh.vendasPagas),'vendas feitas: '+brl(sh.vendasPedidoFeito),'good')}${card('Pedidos pagos',sh.pedidosPagos,'6 pedidos feitos')}${card('Ticket pago',brl(sh.ticketPago),'maior ticket')}${card('Conversão paga',pct(sh.conversaoPago),'tráfego orgânico','warn')}</div>`
+  ].join('');
+  document.getElementById('mlTable').innerHTML='<tr><th>Mês</th><th>Receita</th><th>Pedidos</th><th>Visitas</th><th>Conv.</th><th>Ticket</th></tr>'+d.mercadoLivre.mensal.map(x=>`<tr><td>${x.mes}</td><td>${brl(x.receita)}</td><td>${x.pedidos}</td><td>${num(x.visitas)}</td><td>${pct(x.conversao)}</td><td>${brl(x.ticket)}</td></tr>`).join('');
+  document.getElementById('adsTable').innerHTML='<tr><th>Mês</th><th>Campanha</th><th>Receita</th><th>Inv.</th><th>ROAS</th><th>ACOS</th></tr>'+d.mercadoLivre.ads.map(x=>`<tr><td>${x.mes}</td><td>${x.campanha}</td><td>${brl(x.receita)}</td><td>${brl(x.investimento)}</td><td>${String(x.roas).replace('.',',')}</td><td>${pct(x.acos)}</td></tr>`).join('');
+  document.getElementById('shopeePanel').innerHTML=`<h3>Resumo Shopee</h3><div class="grid two">${card('Vendas feitas',brl(sh.vendasPedidoFeito),'demanda gerada')}${card('Vendas pagas',brl(sh.vendasPagas),'resultado principal','good')}${card('Visitantes',num(sh.visitantes),'junho')}${card('Cancel./devol.',`${sh.cancelamentos} / ${sh.devolucoes}`,'impacto operacional','warn')}</div>`;
+  document.getElementById('fontePanel').innerHTML='<h3>Fontes de tráfego</h3>'+d.shopee.fontes.map(f=>`<div class="insight"><b>${f.fonte}</b><br>${brl(f.vendas)} • ${pct(f.participacao)} das vendas • CTR ${pct(f.ctr)}</div>`).join('');
+  const p=d.shopee.produtoDestaque;
+  document.getElementById('produtoPanel').innerHTML=`<h3>Produto destaque</h3><div class="insight"><b>${p.nome}</b><br>${num(p.impressoes)} impressões • ${num(p.cliques)} cliques • CTR ${pct(p.ctr)} • ${p.pedidos} pedidos • ${brl(p.vendas)}</div><span class="pill">Dependência de SKU</span><span class="pill">Validado organicamente</span><span class="pill">Potencial para variações/kits</span>`;
+  document.getElementById('fortes').innerHTML=d.diagnostico.pontosFortes.map(x=>`<div class="insight">${x}</div>`).join('');
+  document.getElementById('atencao').innerHTML=d.diagnostico.atencao.map(x=>`<div class="insight">${x}</div>`).join('');
+  document.getElementById('acoes').innerHTML=d.diagnostico.acao.map(a=>`<div class="action card"><div><span class="pill">${a.prioridade}</span></div><div><b>${a.acao}</b></div><div><div class="label">Impacto</div><div class="stars">${stars(a.impacto)}</div><div class="label">Esforço</div><div class="stars">${stars(a.esforco)}</div></div></div>`).join('');
+
+  window.addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    const pctScroll=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+    document.getElementById('progress').style.width=pctScroll+'%';
+  },{passive:true});
+
+</script>
+</body>
+</html>
